@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+<!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    
+  <metadata>
+    <id>Lyxdesic-Boxstarter</id>
+    <title>Altova XMLSpy 2016 Enterprise (Install)</title>
+   
+    <version>0.1.0</version>
+    <authors>michaelmasterson</authors>
+    <owners>michaelmasterson</owners>
+    <description>Package description</description>
+    <projectUrl>https://github.com/spoonypirate</projectUrl>
+    <packageSourceUrl>https://github.com/spoonypirate/BoxstarterPackagesr</packageSourceUrl>
+    <tags>Boxstarter</tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
