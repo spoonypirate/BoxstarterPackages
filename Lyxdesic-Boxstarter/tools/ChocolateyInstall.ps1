@@ -17,61 +17,62 @@ try {
     # Update Windows and reboot if necessary
     Install-WindowsUpdate -AcceptEula
     if (Test-PendingReboot) { Invoke-Reboot }
- 
-    cinst -y DotNet3.5 --allowEmptyChecksums# Not automatically installed with VS 2013. Includes .NET 2.0. Uses Windows Features to install.
+    choco feature disable -n=checksumFiles
+    cinst -y DotNet3.5 
     if (Test-PendingReboot) { Invoke-Reboot }
-    cinst -y dotnet4.6 --allowEmptyChecksums
+    cinst -y dotnet4.6
     if (Test-PendingReboot) { Invoke-Reboot }
 
-    cinst -y vcredist2005 --allowEmptyChecksums
-    cinst -y vcredist2008 --allowEmptyChecksums
-    cinst -y vcredist2010 --allowEmptyChecksums
-    cinst -y vcredist2012 --allowEmptyChecksums
-    cinst -y vcredist2013 --allowEmptyChecksums
-    cinst -y vcredist2015 --allowEmptyChecksums
+    cinst -y vcredist2005 
+    cinst -y vcredist2008 
+    cinst -y vcredist2010 
+    cinst -y vcredist2012 
+    cinst -y vcredist2013 
+    cinst -y vcredist2015 
     if (Test-PendingReboot) { Invoke-Reboot }
     cinst -y Microsoft-Hyper-V-All -source windowsfeatures
 
-    cinst -y slack --allowEmptyChecksums
-    cinst -y SourceCodePro --allowEmptyChecksums
-    cinst -y visualstudiocode --allowEmptyChecksums
-    cinst -y 7zip.install --allowEmptyChecksums
-    cinst -y sysinternals --allowEmptyChecksums
-    cinst -y paint.net --allowEmptyChecksums
-    cinst -y winmerge --allowEmptyChecksums
-    cinst -y cmder --allowEmptyChecksums
-    cinst -y poshgit --allowEmptyChecksums
-    cinst -y pester --allowEmptyChecksums
-    cinst -y mobaxterm --allowEmptyChecksums
-    cinst -y linkshellextension  --allowEmptyChecksums
-    cinst -y rktools.2003 --allowEmptyChecksums
-    cinst -y rsat --allowEmptyChecksums
-    cinst -y git-credential-winstore --allowEmptyChecksums
-    cinst -y vagrant --allowEmptyChecksums
-    cinst -y greenshot --allowEmptyChecksums
-    cinst -y autohotkey --allowEmptyChecksums
-    cinst -y lessmsi --allowEmptyChecksums
-    cinst -y lockhunter --allowEmptyChecksums
-    cinst -y rdcman --allowEmptyChecksums
-    cinst -y pscx --allowEmptyChecksums
+    cinst -y slack 
+    cinst -y SourceCodePro 
+    cinst -y visualstudiocode 
+    cinst -y 7zip.install 
+    cinst -y sysinternals 
+    cinst -y paint.net 
+    cinst -y winmerge 
+    cinst -y cmder 
+    cinst -y poshgit 
+    cinst -y pester 
+    cinst -y mobaxterm 
+    cinst -y linkshellextension  
+    cinst -y rktools.2003 
+    cinst -y rsat 
+    cinst -y git-credential-winstore 
+    cinst -y vagrant 
+    cinst -y greenshot 
+    cinst -y autohotkey 
+    cinst -y lessmsi 
+    cinst -y lockhunter 
+    cinst -y rdcman 
+    cinst -y pscx 
 
     # Windows SDK 7 or 8
-    cinst -y windows-sdk-10 --allowEmptyChecksums
+    cinst -y windows-sdk-10 
     if (Test-PendingReboot) { Invoke-Reboot }
 
     #Other dev tools
-    cinst -y NugetPackageExplorer --allowEmptyChecksums
-    cinst -y windbg --allowEmptyChecksums
+    cinst -y NugetPackageExplorer 
+    cinst -y windbg 
 
     #Browsers
-    cinst -y googlechrome --allowEmptyChecksums
-    cinst -y firefox --allowEmptyChecksums
+    cinst -y googlechrome 
+    cinst -y firefox 
 
     #Other essential tools
-    cinst -y adobereader --allowEmptyChecksums
-    cinst -y javaruntime --allowEmptyChecksums
-    cinst -y java.jdk --allowEmptyChecksums
+    cinst -y adobereader 
+    cinst -y javaruntime 
+    cinst -y java.jdk 
 
+    choco feature enable -n=checksumFiles
     Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
     
     Write-ChocolateySuccess 'Lyxdesic-Boxstarter'
