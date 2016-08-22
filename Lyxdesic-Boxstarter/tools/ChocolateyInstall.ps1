@@ -32,6 +32,7 @@ try {
     if (Test-PendingReboot) { Invoke-Reboot }
     cinst -y Microsoft-Hyper-V-All -source windowsfeatures
 
+    cinst -y slack --allowEmptyChecksums
     cinst -y SourceCodePro --allowEmptyChecksums
     cinst -y visualstudiocode --allowEmptyChecksums
     cinst -y 7zip.install --allowEmptyChecksums
