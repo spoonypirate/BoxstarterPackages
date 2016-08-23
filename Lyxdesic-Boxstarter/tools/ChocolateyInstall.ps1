@@ -20,17 +20,15 @@ try {
     Install-WindowsUpdate -AcceptEula
     if (Test-PendingReboot) { Invoke-Reboot }
     choco feature disable -n=checksumFiles
-    choco install -y DotNet3.5 
-    if (Test-PendingReboot) { Invoke-Reboot }
-    choco install -y dotnet4.6
-    if (Test-PendingReboot) { Invoke-Reboot }
-    $vcredists = @("vcredist2005", "vcredist2008", "vcredist2010", "vcredist2012", "vcredist2013", "vcredist2015")
-    foreach ($vcredist in $vcredists) {
-        $check = choco list $vcredist --localonly
+
+    $redistsandnets = @("DotNet3.5", "DotNet4.6", "vcredist2005", "vcredist2008", "vcredist2010", "vcredist2012", "vcredist2013", "vcredist2015")
+    foreach ($redistandnet in $redistsandnets) {
+        $check = choco list $redistandnet --localonly
         if ($check -eq "0 packages installed.") {
-            choco install $vcredist -y
+            choco install $redistandnet -y
+            $check = $null
         } else {
-            choco upgrade $vcredist --force -y
+            choco upgrade $redistandnet -y
         }
     }
     if (Test-PendingReboot) { Invoke-Reboot }
@@ -41,8 +39,9 @@ try {
         $check = choco list $app --localonly
         if ($check -eq "0 packages installed.") {
             choco install $app -y
+            $check = $null
         } else {
-            choco upgrade $app --force -y
+            choco upgrade $app -y
         }
     }
     #RSAT is outdated on chocolatey, doesn't work with newest Win10 builds
@@ -62,8 +61,9 @@ try {
         $check = choco list $2app --localonly
         if ($2app -eq "0 packages installed.") {
             choco install $2app -y
+            $check = $null
         } else {
-            choco upgrade $2app --force -y
+            choco upgrade $2app -y
         }
     }
 
