@@ -109,4 +109,20 @@
 	"description": "creates an xaml gui"
 	}
 
+    	"pester test": {
+            "prefix": "pestertest",
+            "body": [
+                "Describe 'Function-Name' {",
+                "    Context 'Numbers' {",
+                "        It 'does something useful' {",
+                "            $true | Should Be $true",
+                "        }",
+                "    }",
+                "    It 'Does something useful outside the context' {",
+                "       $true | Should Not Be $false",
+                "    }",
+                "}",
+            ],
+            "description": "Framework for a new pester test"
+        }
 }
