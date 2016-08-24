@@ -56,7 +56,7 @@ try {
     choco install -y windows-sdk-10 
     if (Test-PendingReboot) { Invoke-Reboot }
 
-    $2apps = @("NugetPackageExplorer", "windbg", "googlechrome", "adobereader", "javaruntime","autoit.commandline","spotify","lastpass")
+    $2apps = @("NugetPackageExplorer", "windbg", "googlechrome", "javaruntime","autoit.commandline","spotify","lastpass")
     foreach ($2app in $2apps) {
         $check = choco list $2app --localonly
         if ($2app -eq "0 packages installed.") {
@@ -69,13 +69,17 @@ try {
 
     choco feature enable -n=checksumFiles
     
-    Copy-Item -Path "$toolsDir\ConEmu.xml" -Destination "$env:ChocolateyToolsLocation\cmder\vendor\conemu-maximus5\ConEmu.xml"
+    Copy-Item -Path "$toolsDir\ConEmu.xml" -Destination "$env:SystemDrive\tools\cmder\vendor\conemu-maximus5\ConEmu.xml"
     Copy-Item -Path "$toolsDir\json.json" -Destination "$ENV:APPDATA\Code\User\Snippets\json.json"
     Copy-Item -Path "$toolsDir\powershell.json" -Destination "$ENV:APPDATA\Code\User\Snippets\powershell.json"
     Copy-Item -Path "$toolsDir\shellscript.json" -Destination "$ENV:APPDATA\Code\User\Snippets\shellscript.json"
-    
-    Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
-    Install-ChocolateyPinnedTaskBarItem "$env:ChocolateyToolsLocation\cmder\Cmder.exe"
+    Copy-Item -Path "$toolsDir\PinTo10.exe" -Destination "$env:SystemDrive\tools\PinTo10.exe"
+    Copy-Item -Path "$toolsDir\pinitem.cmd" -Destination "$env:SystemDrive\tools\pinitem.cmd"
+    cmd /c "$env:SystemDrive\tools\PinTo10.exe /PTFOL:`"${env:ProgramFiles(x86)}\Google\Chrome\Application`" /PTFILE:`"chrome.exe`""
+    cmd /c "$env:SystemDrive\tools\PinTo10.exe /PTFOL:`"$env:SystemDrive\tools\cmder`" /PTFILE:`"Cmder.exe`""
+    #$ENV:APPDATA\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
+    #Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
+    #Install-ChocolateyPinnedTaskBarItem "$env:ChocolateyToolsLocation\cmder\Cmder.exe"
     
     Write-ChocolateySuccess 'Lyxdesic-Boxstarter'
 
@@ -83,4 +87,3 @@ try {
     Write-ChocolateyFailure 'Lyxdesic-Boxstarter' $($_.Exception.Message)
     throw
     }
-
