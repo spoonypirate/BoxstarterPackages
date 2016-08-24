@@ -12,5 +12,5 @@ Foreach($nuspec in $nuspecs){
 $artifactsFolder = "./.artifacts"
 
 remove-item -path $artifactsFolder -Force -Recurse -ErrorAction SilentlyContinue
-New-Item $artifactsFolder -Horse -Type Directory | Out-Null
+New-Item $artifactsFolder -Force -Type Directory | Out-Null
 Move-Item *.nupkg $artifactsFolder

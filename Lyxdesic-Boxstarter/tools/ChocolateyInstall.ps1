@@ -53,10 +53,9 @@ try {
         if (Test-PendingReboot) { Invoke-Reboot }
         choco install rsat -y
     }#>
-    choco install -y windows-sdk-10 
+    #choco install -y windows-sdk-10 
     if (Test-PendingReboot) { Invoke-Reboot }
-
-    $2apps = @("NugetPackageExplorer", "windbg", "googlechrome", "javaruntime","autoit.commandline","spotify","lastpass")
+    $2apps = @("visualstudio2015community","NugetPackageExplorer", "windbg", "googlechrome", "javaruntime","autoit.commandline","spotify","lastpass")
     foreach ($2app in $2apps) {
         $check = choco list $2app --localonly
         if ($2app -eq "0 packages installed.") {
@@ -66,6 +65,11 @@ try {
             choco upgrade $2app -y
         }
     }
+    #vs extensions
+    Install-ChocolateyVsixPackage PowerShellTools https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/199313/3/PowerShellTools.14.0.vsix
+    Install-ChocolateyVsixPackage NuGet.Tools https://visualstudiogallery.msdn.microsoft.com/5d345edc-2e2d-4a9c-b73b-d53956dc458d/file/146283/13/NuGet.Tools.vsix
+    Install-ChocolateyVsixPackage WebExtensionPack https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459/file/186606/24/Web%20Extension%20Pack%20v1.6.51.vsix
+    Install-ChocolateyVsixPackage T4Toolbox https://visualstudiogallery.msdn.microsoft.com/34b6d489-afbc-4d7b-82c3-dded2b726dbc/file/165481/4/T4Toolbox.14.0.0.76.vsix
 
     choco feature enable -n=checksumFiles
     
