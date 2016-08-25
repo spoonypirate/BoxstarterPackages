@@ -72,7 +72,7 @@ try {
     Install-ChocolateyVsixPackage T4Toolbox https://visualstudiogallery.msdn.microsoft.com/34b6d489-afbc-4d7b-82c3-dded2b726dbc/file/165481/4/T4Toolbox.14.0.0.76.vsix
 
     choco feature enable -n=checksumFiles
-    if (!(Test-Path "$env:appdata\Code\User\Snippets")) { New-Item "$env:appdata\Code\User\Snippets" -Force }
+    if (!(Test-Path "$env:appdata\Code\User\Snippets")) { New-Item "$env:appdata\Code\User\Snippets" -ItemType Directory -Force }
     if (Test-Path "C:\tools\cmder\config") { Write-Warning "Overwriting user-profile.ps1 for cmder" }
     Copy-Item -Path "$toolsDir\user-profile.ps1" -Destination "C:\tools\cmder\config\user-profile.ps1" -Force
 
