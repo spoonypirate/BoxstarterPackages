@@ -7,7 +7,7 @@ try {
     
     $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
     
-    cinst -y golang
+    cinst golang -y
     New-Item -Path "$env:SystemDrive\go\dev" -Force
     Set-EnvironmentVariable gopath "$env:SystemDrive\go\dev"
     Invoke-Reboot
