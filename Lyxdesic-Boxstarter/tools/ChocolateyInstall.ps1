@@ -81,7 +81,7 @@ try {
     Copy-Item -Path "$toolsDir\powershell.json" -Destination "$ENV:APPDATA\Code\User\Snippets\powershell.json"
     Copy-Item -Path "$toolsDir\shellscript.json" -Destination "$ENV:APPDATA\Code\User\Snippets\shellscript.json"
     Copy-Item -Path "$toolsDir\PinTo10.exe" -Destination "$env:SystemDrive\tools\PinTo10.exe"
-    Copy-Item -Path "$toolsDir\pinitem.cmd" -Destination "$env:SystemDrive\tools\pinitem.cmd"
+    #Copy-Item -Path "$toolsDir\pinitem.cmd" -Destination "$env:SystemDrive\tools\pinitem.cmd"
     cmd /c "$env:SystemDrive\tools\PinTo10.exe /PTFOL:`"${env:ProgramFiles(x86)}\Google\Chrome\Application`" /PTFILE:`"chrome.exe`""
     cmd /c "$env:SystemDrive\tools\PinTo10.exe /PTFOL:`"$env:SystemDrive\tools\cmder`" /PTFILE:`"Cmder.exe`""
     #$ENV:APPDATA\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
