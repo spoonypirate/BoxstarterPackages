@@ -3,15 +3,14 @@
 <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     
   <metadata>
-    <id>Lyxdesic-Boxstarter</id>
-    <title>Boxstarter package</title>
-   
-    <version>0.1.4</version>
+    <id>lyx-nugetserver</id>
+    <title>nuget server Boxstarter package</title>
+    <version>0.0.1</version>
     <authors>michaelmasterson</authors>
     <owners>michaelmasterson</owners>
     <description>Package description</description>
     <projectUrl>https://github.com/spoonypirate</projectUrl>
-    <packageSourceUrl>https://github.com/spoonypirate/BoxstarterPackagesr</packageSourceUrl>
+    <packageSourceUrl>https://github.com/spoonypirate/BoxstarterPackages</packageSourceUrl>
     <tags>Boxstarter</tags>
   </metadata>
   <files>

@@ -3,9 +3,10 @@
 <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     
   <metadata>
-    <id>nugetserver</id>
-    <title>nuget server Boxstarter package</title>
-    <version>0.0.1</version>
+    <id>lyx-boxstarter</id>
+    <title>Boxstarter package</title>
+   
+    <version>0.1.4</version>
     <authors>michaelmasterson</authors>
     <owners>michaelmasterson</owners>
     <description>Package description</description>
