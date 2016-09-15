@@ -55,7 +55,7 @@ try {
     }#>
     #choco install -y windows-sdk-10 
     if (Test-PendingReboot) { Invoke-Reboot }
-    $2apps = @("visualstudio2015community","NugetPackageExplorer", "windbg", "googlechrome", "javaruntime","autoit.commandline","spotify","lastpass")
+    $2apps = @("NugetPackageExplorer", "windbg", "googlechrome", "javaruntime","autoit.commandline","spotify","lastpass")
     foreach ($2app in $2apps) {
         $check = choco list $2app --localonly
         if ($2app -eq "0 packages installed.") {
